@@ -9,5 +9,7 @@ export default {
 		}
 	},
 
-	plugins: []
+	plugins: [],
+
+	darkMode: 'class'
 } satisfies Config;
