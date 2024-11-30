@@ -5,6 +5,14 @@ import { browser } from '$app/environment';
 
 let darkMode = true;
 
+if (browser) {
+	if (localStorage.theme === 'dark') {
+		darkMode = true;
+	} else {
+		darkMode = false;
+	}
+}
+
 function handleSwitchDarkMode() {
 	darkMode = !darkMode;
 
@@ -13,19 +21,6 @@ function handleSwitchDarkMode() {
 	darkMode
 		? document.documentElement.classList.add('dark')
 		: document.documentElement.classList.remove('dark');
-}
-
-if (browser) {
-	if (
-		localStorage.theme === 'dark' ||
-		(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-	) {
-		document.documentElement.classList.add('dark');
-		darkMode = true;
-	} else {
-		document.documentElement.classList.remove('dark');
-		darkMode = false;
-	}
 }
 </script>
 
